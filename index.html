@@ -1,0 +1,742 @@
+<title>Ruta del Emprendedor</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Nunito+Sans:wght@400;600;700;800&display=swap');
+
+  :root{
+    --bg:#EDF2F6;
+    --surface:#FFFFFF;
+    --surface-2:#E1E9F0;
+    --ink:#0E2236;
+    --soft:#566B7F;
+    --line:#D1DCE6;
+    --accent:#C94A06;
+    --accent-ink:#FFFFFF;
+    --accent-soft:#FDEADB;
+    --t-ctrl:#0B7A75;
+    --t-frus:#C2335B;
+    --t-rue:#6C47C9;
+    --t-can:#1C5FD4;
+    --t-comp:#0C7FA3;
+    --t-eric:#A8680F;
+    color-scheme:light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0B1724;
+      --surface:#12263A;
+      --surface-2:#1B3350;
+      --ink:#EAF1F8;
+      --soft:#9DB2C6;
+      --line:#274360;
+      --accent:#FF9A55;
+      --accent-ink:#1A0D02;
+      --accent-soft:#3A2412;
+      --t-ctrl:#4FD1C5;
+      --t-frus:#FF7FA2;
+      --t-rue:#AE95FF;
+      --t-can:#7FAAFF;
+      --t-comp:#58C8E8;
+      --t-eric:#F0B65B;
+      color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0B1724;--surface:#12263A;--surface-2:#1B3350;--ink:#EAF1F8;--soft:#9DB2C6;--line:#274360;
+    --accent:#FF9A55;--accent-ink:#1A0D02;--accent-soft:#3A2412;
+    --t-ctrl:#4FD1C5;--t-frus:#FF7FA2;--t-rue:#AE95FF;--t-can:#7FAAFF;--t-comp:#58C8E8;--t-eric:#F0B65B;
+    color-scheme:dark;
+  }
+
+  *{box-sizing:border-box;}
+  body{background:var(--bg);color:var(--ink);font-family:'Nunito Sans',system-ui,sans-serif;margin:0;}
+  .wrap{max-width:720px;margin:0 auto;padding:20px 16px 56px;}
+  h1,h2,h3{font-family:'Unbounded','Nunito Sans',sans-serif;font-weight:700;margin:0;text-wrap:balance;letter-spacing:-0.02em;}
+  button{font-family:inherit;}
+  [hidden]{display:none!important;}
+  .eyebrow{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);}
+  .k-ctrl{--dc:var(--t-ctrl);} .k-frus{--dc:var(--t-frus);} .k-rue{--dc:var(--t-rue);}
+  .k-can{--dc:var(--t-can);} .k-comp{--dc:var(--t-comp);} .k-eric{--dc:var(--t-eric);} .k-none{--dc:var(--accent);}
+
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:26px;}
+  .btn{appearance:none;border:none;border-radius:12px;padding:14px 24px;font-weight:800;font-size:15px;cursor:pointer;transition:transform .12s ease,opacity .12s ease;}
+  .btn:active{transform:scale(.97);}
+  .btn:focus-visible,.opt:focus-visible,.step:focus-visible,.gift:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+  .btn-primary{background:var(--accent);color:var(--accent-ink);}
+  .btn-primary:disabled{opacity:.35;cursor:not-allowed;}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line);}
+  .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;}
+  .row.end{justify-content:flex-end;}
+
+  /* start */
+  .brand{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:13px;margin-bottom:18px;}
+  .brand b{background:var(--ink);color:var(--bg);font-family:'Unbounded',sans-serif;border-radius:8px;padding:5px 9px;font-size:14px;}
+  .hero h1{font-size:clamp(30px,7.2vw,48px);line-height:1.04;margin:12px 0 16px;}
+  .hero h1 span{color:var(--accent);}
+  .hero p{color:var(--soft);font-size:16.5px;line-height:1.6;max-width:54ch;margin:0;}
+  .map{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:8px;}
+  .map li{display:flex;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 14px;font-size:14px;font-weight:700;}
+  .map li i{flex:none;width:28px;height:28px;border-radius:50%;background:var(--dc);color:#fff;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:12px;font-family:'Unbounded',sans-serif;}
+  .map li span{color:var(--soft);font-weight:600;font-size:12.5px;margin-left:auto;text-align:right;}
+  .field{margin-top:26px;max-width:380px;}
+  .field label{display:block;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);margin-bottom:6px;}
+  .field input,.field textarea{width:100%;padding:13px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);font-size:15px;font-family:inherit;}
+  .field input:focus,.field textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent);}
+
+  /* trail */
+  .top{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:5;padding:6px 0 14px;}
+  .top-row{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--soft);font-weight:700;margin-bottom:12px;}
+  .trail{position:relative;display:grid;grid-template-columns:repeat(10,1fr);align-items:center;}
+  .trail::before{content:"";position:absolute;left:5%;right:5%;top:50%;height:3px;background:var(--line);transform:translateY(-50%);border-radius:3px;}
+  .trail .fillbar{position:absolute;left:5%;top:50%;height:3px;background:var(--accent);transform:translateY(-50%);border-radius:3px;transition:width .5s ease;}
+  .node{position:relative;justify-self:center;width:24px;height:24px;border-radius:50%;background:var(--surface);border:2.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--soft);}
+  .node.done{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);}
+  .node.now{border-color:var(--accent);color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft);transform:scale(1.18);}
+  .tagrow{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:8px;flex-wrap:wrap;}
+  .dtag{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--dc);display:inline-flex;align-items:center;gap:7px;}
+  .dtag i{width:9px;height:9px;border-radius:50%;background:var(--dc);display:block;}
+  .gtag{font-size:11.5px;font-weight:800;padding:4px 10px;border-radius:99px;background:var(--accent-soft);color:var(--accent);}
+  .scene{background:var(--surface-2);border-radius:14px;padding:14px 16px;font-size:15px;line-height:1.55;margin-bottom:16px;border-left:4px solid var(--dc);}
+  .q{font-family:'Unbounded',sans-serif;font-weight:700;font-size:19px;line-height:1.3;margin:0 0 18px;text-wrap:balance;}
+
+  .opts{display:flex;flex-direction:column;gap:10px;}
+  .opt{display:block;width:100%;text-align:left;padding:14px 16px;border-radius:14px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);font-size:15px;line-height:1.45;cursor:pointer;transition:border-color .12s,background .12s;font-weight:600;}
+  .opt:hover{border-color:var(--dc);}
+  .opt.picked{border-color:var(--dc);background:color-mix(in srgb,var(--dc) 14%,var(--surface));}
+  .opt:disabled{cursor:default;}
+  .opt:disabled:not(.picked){opacity:.55;}
+
+  .note{margin-top:20px;border-radius:14px;padding:14px 16px;background:var(--accent-soft);font-size:14.5px;line-height:1.55;}
+  .note b{display:block;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;}
+
+  .flash{background:var(--surface-2);border-radius:18px;padding:24px 20px;text-align:center;font-family:'Unbounded',sans-serif;font-weight:500;font-size:17px;line-height:1.4;min-height:104px;display:flex;align-items:center;justify-content:center;animation:pop .25s ease;}
+  @keyframes pop{from{transform:translateY(8px);opacity:.3}to{transform:none;opacity:1}}
+  .choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-top:14px;}
+  .choices .opt{text-align:center;font-weight:800;padding:15px 10px;}
+  .count{font-size:12.5px;color:var(--soft);font-weight:700;margin-bottom:10px;}
+
+  .slots{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;}
+  .slot{display:flex;gap:12px;align-items:center;min-height:50px;padding:10px 14px;border-radius:12px;border:1.5px dashed var(--line);font-size:14.5px;font-weight:600;}
+  .slot.filled{border-style:solid;border-color:var(--dc);background:color-mix(in srgb,var(--dc) 10%,var(--surface));}
+  .slot em{font-style:normal;font-weight:800;color:var(--dc);width:20px;flex:none;}
+  .steps{display:flex;flex-direction:column;gap:8px;}
+  .step{padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);font-size:14.5px;text-align:left;cursor:pointer;font-weight:600;}
+  .step:hover{border-color:var(--dc);}
+  .step.used{opacity:.3;pointer-events:none;}
+
+  .sliders{display:grid;gap:14px;margin-bottom:20px;}
+  .sl label{display:flex;justify-content:space-between;font-size:14px;font-weight:800;margin-bottom:4px;}
+  .sl label span{color:var(--dc);font-family:'Unbounded',sans-serif;font-size:14px;}
+  .sl input[type=range]{width:100%;accent-color:var(--dc);height:28px;}
+  .sl small{display:block;color:var(--soft);font-size:12px;line-height:1.35;}
+  .sub{font-size:13px;font-weight:800;color:var(--soft);margin:4px 0 10px;}
+
+  .tbl-wrap{overflow-x:auto;margin-bottom:16px;border-radius:12px;border:1px solid var(--line);}
+  table.cmp{border-collapse:collapse;width:100%;min-width:420px;font-size:13.5px;}
+  table.cmp th,table.cmp td{padding:9px 12px;text-align:center;border-bottom:1px solid var(--line);}
+  table.cmp th:first-child,table.cmp td:first-child{text-align:left;font-weight:700;}
+  table.cmp thead th{background:var(--surface-2);font-size:12px;letter-spacing:.04em;text-transform:uppercase;}
+  table.cmp td.me{background:var(--accent-soft);font-weight:800;}
+  table.cmp tr:last-child td{border-bottom:none;}
+
+  /* results */
+  .stack > * + *{margin-top:16px;}
+  .res-head h1{font-size:clamp(24px,6vw,36px);line-height:1.1;margin:8px 0 10px;}
+  .res-head p{color:var(--soft);margin:0;font-size:15.5px;line-height:1.55;}
+  .badge{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:8px 16px;border-radius:99px;background:var(--accent);color:var(--accent-ink);font-weight:800;font-size:14px;}
+  .radar{display:block;width:100%;max-width:400px;margin:6px auto 0;}
+  .radar text{fill:var(--ink);font-family:'Nunito Sans',sans-serif;font-size:11.5px;font-weight:800;}
+  .radar .grid{fill:none;stroke:var(--line);stroke-width:1;}
+  .radar .axis{stroke:var(--line);stroke-width:1;}
+  .radar .shape{fill:color-mix(in srgb,var(--accent) 24%,transparent);stroke:var(--accent);stroke-width:2.5;stroke-linejoin:round;}
+  .bars{display:flex;flex-direction:column;gap:14px;margin-top:18px;}
+  .bar-top{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;font-weight:800;margin-bottom:6px;}
+  .bar-top span{font-size:12px;color:var(--dc);}
+  .track{height:10px;border-radius:99px;background:var(--surface-2);overflow:hidden;}
+  .fill{height:100%;border-radius:99px;background:var(--dc);width:0;transition:width .9s cubic-bezier(.2,.8,.2,1);}
+  .coach{display:flex;gap:14px;align-items:center;margin-bottom:6px;}
+  .avatar{flex:none;width:54px;height:54px;border-radius:50%;background:var(--ink);color:var(--bg);display:flex;align-items:center;justify-content:center;font-family:'Unbounded',sans-serif;font-weight:700;font-size:17px;}
+  .coach h2{font-size:18px;line-height:1.2;}
+  .coach p{margin:2px 0 0;color:var(--soft);font-size:13.5px;}
+  .letter{margin-top:16px;padding:18px 18px;border-radius:16px;background:var(--accent-soft);font-size:15.5px;line-height:1.6;}
+  .letter strong{display:block;font-family:'Unbounded',sans-serif;font-size:16px;margin-bottom:6px;}
+  .tips{display:flex;flex-direction:column;gap:12px;margin-top:14px;}
+  .tip{border-radius:14px;padding:14px 16px;border:1px solid var(--line);border-left:5px solid var(--dc);background:var(--surface);}
+  .tip small{display:block;font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--dc);margin-bottom:5px;}
+  .tip p{margin:0;font-size:14.5px;line-height:1.55;}
+  .quote{margin:18px 0 0;padding:0 0 0 14px;border-left:3px solid var(--accent);font-style:italic;color:var(--soft);font-size:14px;line-height:1.55;}
+  .frase{font-size:15px;line-height:2.1;}
+  .frase input{display:inline-block;width:min(100%,230px);padding:6px 10px;border-radius:8px;border:none;border-bottom:2.5px solid var(--accent);background:var(--surface-2);color:var(--ink);font-size:15px;font-family:inherit;font-weight:700;}
+  .frase input:focus{outline:2px solid var(--accent);outline-offset:1px;}
+
+  .commit-fb{margin-top:20px;border-radius:18px;padding:22px 20px;text-align:center;background:var(--accent-soft);border:1px solid var(--line);animation:pop .3s ease;}
+  .cf-emoji{font-size:52px;line-height:1;margin-bottom:6px;}
+  .commit-fb h3{font-size:19px;}
+  .commit-fb p{margin:8px auto 0;max-width:50ch;font-size:14.5px;line-height:1.55;}
+  .gift{font-size:50px;line-height:1;background:none;border:none;cursor:pointer;padding:6px;animation:wiggle 1.4s ease-in-out infinite;margin-top:10px;}
+  .gift:disabled{animation:none;cursor:default;}
+  @keyframes wiggle{0%,100%{transform:rotate(0)}15%{transform:rotate(-10deg)}30%{transform:rotate(9deg)}45%{transform:rotate(-6deg)}60%{transform:rotate(0)}}
+  .gift-cap{font-size:12.5px;font-weight:800;color:var(--soft);}
+  .prize{margin-top:8px;background:var(--surface);border:1.5px dashed var(--accent);border-radius:14px;padding:14px 16px;font-size:14.5px;line-height:1.55;font-weight:700;animation:pop .3s ease;}
+  #party{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:50;}
+  .pf{position:absolute;top:-60px;animation-name:fall;animation-timing-function:ease-in;animation-fill-mode:forwards;}
+  @keyframes fall{0%{transform:translate(0,0) rotate(0);opacity:1}100%{transform:translate(var(--dx),110vh) rotate(540deg);opacity:.9}}
+
+  @media (max-width:480px){
+    .card{padding:20px 16px;border-radius:16px;}
+    .q{font-size:17px;}
+    .node{width:22px;height:22px;font-size:9px;}
+  }
+  @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important;}}
+</style>
+
+<div class="wrap">
+
+  <section id="s-start" class="hero">
+    <div class="brand"><b>i3</b> Instituto i3 · Emprendimiento emocional</div>
+    <div class="eyebrow">Juego del módulo</div>
+    <h1>La ruta del <span>emprendedor.</span></h1>
+    <p>Diez etapas, diez retos. Vas a recorrer el camino que sigue quien emprende con la cabeza y el corazón en orden: controlar lo que sí depende de ti, cuidar tu vida, armar tu Canvas, mirar a la competencia y diferenciarte con la matriz ERIC. Al final, el coach Camilo Gallego te deja un mensaje de motivación según cómo jugaste.</p>
+    <ol class="map" id="map"></ol>
+    <div class="field">
+      <label for="in-name">Tu nombre (opcional)</label>
+      <input id="in-name" type="text" autocomplete="given-name" placeholder="Para personalizar tu mensaje">
+    </div>
+    <div class="row"><button class="btn btn-primary" id="b-start">Empezar la ruta</button></div>
+  </section>
+
+  <section id="s-quiz" hidden>
+    <div class="top">
+      <div class="top-row"><span id="q-count">Etapa 1 de 10</span><span>Coach Camilo Gallego</span></div>
+      <div class="trail" id="trail"></div>
+    </div>
+    <div class="card" id="qcard"></div>
+  </section>
+
+  <section id="s-res" hidden class="stack"></section>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var TOPICS = {
+    ctrl:{name:"Círculo de control"},
+    frus:{name:"Manejo de la frustración"},
+    rue:{name:"Rueda de la vida"},
+    can:{name:"Modelo Canvas"},
+    comp:{name:"Panorama competitivo"},
+    eric:{name:"Matriz ERIC"}
+  };
+  var TORDER = ["ctrl","frus","rue","can","comp","eric"];
+
+  var AREAS = [
+    {k:"trabajo",   n:"Trabajo y estudio",     h:"Resultados, aprendizaje y crecimiento."},
+    {k:"familia",   n:"Familia y relaciones",  h:"Tiempo de calidad, comunicación y apoyo."},
+    {k:"salud",     n:"Salud y bienestar",     h:"Descanso, alimentación, actividad y cuidado emocional."},
+    {k:"finanzas",  n:"Finanzas",              h:"Gastos, ingresos, ahorro y estabilidad."},
+    {k:"desarrollo",n:"Desarrollo personal",   h:"Aprender, adquirir habilidades y conocerte."},
+    {k:"ocio",      n:"Ocio y disfrute",       h:"Descansar y desconectarte de las obligaciones."}
+  ];
+  var AREA_TIPS = {
+    trabajo:"Tu trabajo y estudio piden atención: divide tus objetivos en tareas pequeñas y revisa avances cada semana.",
+    familia:"Reserva un tiempo semanal de calidad para tus vínculos. Emprender no debería costarte las personas que te sostienen.",
+    salud:"Programa pausas durante tu jornada y protege tu descanso. Cuidar tu energía es cuidar tu negocio.",
+    finanzas:"Ordena tus gastos e ingresos y conoce tu margen: vender no es lo mismo que ganar dinero.",
+    desarrollo:"Elige una habilidad por desarrollar y dale 20 minutos esta semana. Conocerte también es una forma de crecer.",
+    ocio:"Agenda un espacio para disfrutar sin culpa. El descanso y el juego también hacen parte de una vida sostenible."
+  };
+
+  var Q = [
+    {t:"cards", k:"ctrl", stage:"Círculo de control", game:"Clasifica", q:"Ubica cada situación en la zona del círculo de control donde le corresponde.",
+     labels:["Control","Influencia","Preocupación"],
+     c:[{s:"La forma en que respondo ante una crítica", a:0},
+        {s:"La negociación con mis proveedores", a:1},
+        {s:"Los cambios generales de la economía", a:2},
+        {s:"La calidad de mi trabajo", a:0},
+        {s:"La confianza de mis clientes", a:1},
+        {s:"Las decisiones de otras personas", a:2}],
+     note:"Concentra tu energía donde puedes actuar. No puedes obligar a un cliente a comprar, pero sí mejorar tu producto, comunicar mejor su valor y dar buena atención."},
+
+    {t:"order", k:"frus", stage:"Frustración", game:"Ordena", scene:"Pasaron semanas y tus ventas siguen bajas. Sientes desmotivación y ganas de abandonar.",
+     q:"Ordena los pasos para gestionar la frustración, del primero al último.",
+     steps:["Reconocer la emoción sin juzgarme","Identificar qué originó la frustración","Diferenciar los hechos de mis interpretaciones","Analizar qué aspectos puedo modificar","Definir una respuesta consciente y realista"],
+     note:"Sentir frustración no significa ser incapaz de emprender; lo importante es aprender a responder ante las dificultades."},
+
+    {t:"wheel", k:"rue", stage:"Rueda de la vida", game:"Mide tu rueda", scene:"Esta etapa no tiene respuestas correctas: es tu foto de hoy. Califica de 1 (muy insatisfecho) a 10 (muy satisfecho).",
+     q:"¿Cómo está tu vida hoy?",
+     note:"La rueda de la vida no es una prueba ni una medida del éxito: es una herramienta para reconocer qué has descuidado y decidir con conciencia en qué usar tu tiempo."},
+
+    {t:"case", k:"can", stage:"Canvas · Clientes", scene:"Armas el Canvas de tu emprendimiento de snacks saludables y llegas al bloque de segmentos de clientes.",
+     q:"¿Cuál es el segmento mejor definido?",
+     o:[["Todas las personas que comen.",0],
+        ["Estudiantes universitarios de 18 a 25 años que buscan alimentos saludables, económicos y rápidos.",2],
+        ["Gente que tenga dinero.",0],
+        ["Quienes ya compran en mi barrio.",1]],
+     note:"Define quién es tu cliente: edad, ubicación, necesidades, hábitos y comportamiento. En clave emocional: ¿qué siente, qué le preocupa y qué quiere experimentar?"},
+
+    {t:"cards", k:"can", stage:"Canvas · Los 9 bloques", game:"Clasifica", q:"Cada bloque del Canvas responde una gran pregunta. ¿A cuál pertenece?",
+     labels:["¿A quién?","¿Cómo?","¿Cuánto?"],
+     c:[{s:"Segmentos de clientes", a:0},
+        {s:"Canales y actividades clave", a:1},
+        {s:"Fuentes de ingresos", a:2},
+        {s:"Propuesta de valor", a:0},
+        {s:"Socios y recursos clave", a:1},
+        {s:"Estructura de costos", a:2}],
+     note:"El Canvas de Osterwalder y Pigneur responde: ¿qué valor creo, cómo lo entrego y cómo genero ingresos? Una idea no es necesariamente un buen negocio: debe analizarse y validarse."},
+
+    {t:"cards", k:"can", stage:"Canvas · Costos", game:"Clasifica", q:"Para saber cuánto cuesta operar, clasifica cada costo.",
+     labels:["Costo fijo","Costo variable"],
+     c:[{s:"Arriendo del local", a:0},
+        {s:"Materia prima", a:1},
+        {s:"Internet y software", a:0},
+        {s:"Empaques y transporte", a:1},
+        {s:"Nómina", a:0},
+        {s:"Publicidad", a:1}],
+     note:"Vender no es lo mismo que ganar dinero: hay que conocer costos y margen. Pregúntate qué necesitas pagar para mantener funcionando tu emprendimiento."},
+
+    {t:"cards", k:"comp", stage:"Panorama competitivo", game:"Clasifica", q:"¿Qué tipo de competidor es cada uno para una cafetería independiente?",
+     labels:["Directo","Indirecto","Potencial"],
+     c:[{s:"Otra cafetería del mismo barrio", a:0},
+        {s:"Una tienda de cereales que compite por el desayuno", a:1},
+        {s:"Una gran cadena de cafeterías que abrirá una sede cerca", a:2}],
+     note:"Los clientes no siempre comparan productos iguales: comparan distintas formas de resolver una necesidad."},
+
+    {t:"matrix", k:"comp", stage:"Matriz competitiva", game:"Lee la matriz", scene:"Puntuaciones hipotéticas de 1 a 5 para un emprendimiento de postres artesanales.",
+     q:"¿En qué dos factores le conviene diferenciarse a «Mi negocio»?",
+     rows:[["Precio competitivo",4,5,3],["Calidad del producto",4,3,5],["Variedad de sabores",3,5,4],["Personalización",5,2,3],["Entrega a domicilio",3,4,5],["Empaques sostenibles",5,2,3]],
+     o:[["Personalización y empaques sostenibles, donde saca ventaja clara.",2],
+        ["Precio y variedad, donde el Competidor A ya domina.",0],
+        ["Entrega a domicilio y calidad, donde el Competidor B es mejor.",0],
+        ["En ninguno: mejor copiar a los competidores.",0]],
+     note:"Una oportunidad competitiva debe ser valorada por los clientes y viable para el negocio. Las valoraciones deben sustentarse en observaciones y datos reales."},
+
+    {t:"cards", k:"eric", stage:"Matriz ERIC", game:"Clasifica", q:"Del océano rojo al océano azul: ¿en qué casilla de la matriz ERIC va cada acción?",
+     labels:["Eliminar","Reducir","Incrementar","Crear"],
+     c:[{s:"Decoraciones estándar que no aportan valor", a:0},
+        {s:"El desperdicio de ingredientes", a:1},
+        {s:"La personalización y la asesoría al cliente", a:2},
+        {s:"Una experiencia de postres diseñada para cada celebración", a:3}],
+     note:"No se trata solo de ser mejor que los competidores, sino de encontrar formas diferentes de crear valor. Toda propuesta debe validarse con clientes y ser económicamente viable."},
+
+    {t:"case", k:null, stage:"Tu emoción", scene:"Tu Canvas está listo, conoces a tu competencia y tu propuesta es diferente. Llega el día del lanzamiento.",
+     q:"¿Qué emoción necesitas aprender a gestionar para avanzar?",
+     o:[["Miedo al fracaso o a la crítica",0,"miedo"],
+        ["Frustración si las ventas no llegan rápido",0,"frustracion"],
+        ["Ansiedad y estrés por todo lo pendiente",0,"ansiedad"],
+        ["Comparación constante con otros emprendedores",0,"comparacion"]],
+     note:"Emprender también es aprender a gestionarte. Nombrar la emoción que más te frena es el primer paso para trabajarla."}
+  ];
+  var TOTAL = Q.length;
+
+  var MAXT = {};
+  TORDER.forEach(function(k){ MAXT[k]=0; });
+  Q.forEach(function(q){ if(q.k) MAXT[q.k] += 2; });
+
+  var TIPS = {
+    ctrl:{
+      low:["Antes de preocuparte, dibuja tus tres círculos: qué depende de ti, en qué puedes influir y qué no controlas. Elige una acción de tu zona de control para las próximas 24 horas.",
+           "Cuando sientas que algo te desborda, pregúntate: «¿Esto depende de mí?». Si no, suelta la energía; si sí, actúa hoy."],
+      high:["Distingues bien lo que depende de ti. Úsalo como filtro cada vez que una preocupación te quite el sueño."]},
+    frus:{
+      low:["Ante la frustración, no te pelees contigo: reconócela sin juzgarte, busca qué la originó y separa hechos de interpretaciones. Luego define una respuesta realista.",
+           "Recuerda: sentir frustración no te hace incapaz de emprender. Anota tres hechos de esta semana antes de sacar conclusiones sobre ti."],
+      high:["Sabes cómo atravesar la frustración. Compártelo con tu equipo: enseñar el proceso lo fortalece en ti también."]},
+    rue:{
+      low:["Revisa tu rueda cada mes. Escoge un área y una acción realista para los próximos siete días."],
+      high:["Estás atento a tu equilibrio. Mantén tu rueda a la vista: cuando el negocio crece, las demás áreas suelen quedar en segundo plano."]},
+    can:{
+      low:["Vuelve a tu Canvas con tres preguntas: ¿a quién le vendo?, ¿cómo llego a mi cliente y cómo me relaciono con él? y ¿cuánto cuesta operar? Un bloque claro a la vez.",
+           "Valida tu idea hablando con clientes reales antes de gastar: una buena idea necesita estrategia, aprendizaje y validación."],
+      high:["Tu Canvas está bien pensado. Ahora llévalo a la calle: valida cada bloque con clientes reales y ajusta."]},
+    comp:{
+      low:["Haz tu matriz de panorama competitivo con dos competidores directos y cinco factores, con una escala del 1 al 5 apoyada en datos reales, no solo en percepciones.",
+           "Pregúntate qué necesidad de tus clientes está poco atendida: ahí puede estar tu diferencia."],
+      high:["Lees bien el mercado. Revisa tu matriz cada trimestre: los competidores y los clientes también cambian."]},
+    eric:{
+      low:["Aplica la matriz ERIC a tu idea: ¿qué elimino, qué reduzco, qué incremento y qué creo? Una sola casilla bien pensada ya te separa del océano rojo.",
+           "Antes de lanzar tu propuesta diferente, compruébala con clientes potenciales y revisa que sea rentable."],
+      high:["Piensas como un navegante del océano azul. Cuida que cada innovación resuelva una necesidad real y mantenga el negocio viable."]}
+  };
+  var FOCUS_TIPS = {
+    miedo:"El miedo no se elimina: se vuelve guía. Empieza con acciones de bajo costo y aprende de la respuesta del mercado antes de arriesgar más.",
+    frustracion:"Cuando las ventas no lleguen, haz la pausa: nombra la emoción, revisa los datos y decide qué sí depende de ti.",
+    ansiedad:"Divide lo grande en tareas pequeñas, ordénalas por prioridad y reserva descanso. Y no tomes decisiones importantes cuando estés muy alterado.",
+    comparacion:"Compararte con otros te roba energía: tu zona de control es tu propio camino. Usa a la competencia como información, no como juicio sobre ti."
+  };
+  var FOCUS_LABEL = {miedo:"Miedo al fracaso", frustracion:"Frustración", ansiedad:"Ansiedad y estrés", comparacion:"Comparación con otros"};
+
+  var TIERS = {
+    high:{badge:"🏆 Capitán del océano azul",
+          title:"qué ruta tan sólida",
+          text:"Llegaste al final con la brújula bien puesta: sabes distinguir lo que depende de ti, entiendes tu negocio y miras al mercado con ojos nuevos. No te confíes ni te frenes: ahora toca poner todo en práctica, validar con clientes reales y cuidarte en el camino. Emprender con propósito es una maratón, y ya vas con buen ritmo."},
+    mid:{badge:"🧭 Constructor de ruta",
+         title:"vas por muy buen camino",
+         text:"Ya tienes varias piezas en su lugar y otras que pulir, y eso es exactamente lo normal en quien empieza. Tu ruta no se mide por lo que todavía no sabes, sino por lo que decides practicar desde hoy. Elige una sola pieza para reforzar esta semana, dale 20 minutos y verás el cambio. Aquí estoy para acompañarte."},
+    low:{badge:"🌱 Explorador en marcha",
+         title:"este es solo el comienzo",
+         text:"Terminaste la ruta completa, y eso ya dice mucho de ti: te atreviste a mirarte y a mirar tu idea de frente. Hoy tu resultado es un punto de partida, no un veredicto. Todo lo que te cuesta se puede entrenar con pasos pequeños: un círculo de control, un Canvas, una matriz a la vez. Yo creo en tu proceso; ahora te toca creer en él tú."}
+  };
+
+  var st;
+  function resetState(){
+    st = {idx:0, pts:{}, focus:null, name:"", wheel:{}, wheelPick:null};
+    TORDER.forEach(function(k){ st.pts[k]=0; });
+    AREAS.forEach(function(a){ st.wheel[a.k]=5; });
+  }
+  resetState();
+
+  var $ = function(id){ return document.getElementById(id); };
+  var sStart=$('s-start'), sQuiz=$('s-quiz'), sRes=$('s-res'), card=$('qcard');
+
+  function show(el){ [sStart,sQuiz,sRes].forEach(function(s){ s.hidden = s!==el; }); window.scrollTo({top:0, behavior:'auto'}); }
+  function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+  function el(tag, cls, text){ var e=document.createElement(tag); if(cls) e.className=cls; if(text!==undefined) e.textContent=text; return e; }
+
+  /* start map */
+  (function(){
+    var map = $('map');
+    Q.forEach(function(q,i){
+      var li = el('li','k-'+(q.k||'none'));
+      li.appendChild(el('i',null,String(i+1)));
+      li.appendChild(document.createTextNode(q.stage));
+      li.appendChild(el('span',null,q.game || 'Caso'));
+      map.appendChild(li);
+    });
+  })();
+
+  $('b-start').addEventListener('click', function(){
+    resetState(); st.name = $('in-name').value.trim();
+    show(sQuiz); render();
+  });
+
+  function buildTrail(){
+    var box = $('trail'); box.innerHTML = '';
+    var bar = el('div','fillbar');
+    bar.style.width = (st.idx/(TOTAL-1))*90 + '%';
+    box.appendChild(bar);
+    for(var i=0;i<TOTAL;i++){
+      var n = el('span','node' + (i<st.idx?' done':(i===st.idx?' now':'')), i<st.idx ? '✓' : String(i+1));
+      box.appendChild(n);
+    }
+  }
+
+  function render(){
+    var q = Q[st.idx];
+    $('q-count').textContent = 'Etapa ' + (st.idx+1) + ' de ' + TOTAL;
+    buildTrail();
+    card.innerHTML = ''; card.className = 'card k-' + (q.k||'none');
+    var tr = el('div','tagrow');
+    var dt = el('span','dtag'); dt.appendChild(el('i')); dt.appendChild(document.createTextNode(q.stage)); tr.appendChild(dt);
+    if(q.game) tr.appendChild(el('span','gtag','Minijuego · ' + q.game));
+    card.appendChild(tr);
+    if(q.scene) card.appendChild(el('div','scene',q.scene));
+    card.appendChild(el('h2','q',q.q));
+    var area = el('div'); card.appendChild(area);
+    ({case:caseUI, cards:cardsUI, order:orderUI, wheel:wheelUI, matrix:matrixUI})[q.t](q, area);
+  }
+
+  function award(q, pts){
+    if(q.k) st.pts[q.k] += pts;
+    var n = el('div','note'); n.appendChild(el('b',null,'Dato del coach')); n.appendChild(document.createTextNode(q.note));
+    card.appendChild(n);
+    var row = el('div','row end'); var last = st.idx===TOTAL-1;
+    var b = el('button','btn btn-primary', last ? 'Terminar la ruta' : 'Siguiente etapa');
+    b.addEventListener('click', function(){ if(last){ finish(); } else { st.idx++; render(); } });
+    row.appendChild(b); card.appendChild(row);
+    b.focus({preventScroll:true});
+    n.scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
+
+  function optionButtons(q, area){
+    var box = el('div','opts'); area.appendChild(box);
+    shuffle(q.o).forEach(function(opt){
+      var b = el('button','opt',opt[0]);
+      b.addEventListener('click', function(){
+        Array.prototype.forEach.call(box.children, function(x){ x.disabled = true; });
+        b.classList.add('picked');
+        if(opt[2]) st.focus = opt[2];
+        award(q, opt[1]);
+      });
+      box.appendChild(b);
+    });
+  }
+  function caseUI(q, area){ optionButtons(q, area); }
+
+  function matrixUI(q, area){
+    var wrap = el('div','tbl-wrap'); var t = el('table','cmp');
+    var thead = el('thead'); var hr = el('tr');
+    ['Factor','Mi negocio','Competidor A','Competidor B'].forEach(function(h){ hr.appendChild(el('th',null,h)); });
+    thead.appendChild(hr); t.appendChild(thead);
+    var tb = el('tbody');
+    q.rows.forEach(function(r){
+      var tr = el('tr');
+      r.forEach(function(v,i){ var td = el('td', i===1?'me':null, String(v)); tr.appendChild(td); });
+      tb.appendChild(tr);
+    });
+    t.appendChild(tb); wrap.appendChild(t); area.appendChild(wrap);
+    optionButtons(q, area);
+  }
+
+  function cardsUI(q, area){
+    var i = 0, ok = 0;
+    var count = el('div','count'), deck = el('div'), btns = el('div','choices');
+    area.appendChild(count); area.appendChild(deck); area.appendChild(btns);
+    function showCard(){
+      var c = q.c[i];
+      count.textContent = 'Tarjeta ' + (i+1) + ' de ' + q.c.length;
+      deck.innerHTML = ''; deck.appendChild(el('div','flash',c.s));
+      btns.innerHTML = '';
+      q.labels.forEach(function(txt,k){
+        var b = el('button','opt',txt);
+        b.addEventListener('click', function(){
+          if(k===c.a) ok++;
+          b.classList.add('picked');
+          Array.prototype.forEach.call(btns.children, function(x){ x.disabled = true; });
+          setTimeout(function(){
+            i++;
+            if(i<q.c.length) showCard();
+            else { count.textContent = 'Tarjetas completadas'; deck.innerHTML=''; btns.innerHTML=''; award(q, Math.round(2*ok/q.c.length)); }
+          }, 280);
+        });
+        btns.appendChild(b);
+      });
+    }
+    showCard();
+  }
+
+  function orderUI(q, area){
+    var slots = el('div','slots'), stepsBox = el('div','steps'), ctl = el('div','row');
+    area.appendChild(slots); area.appendChild(stepsBox); area.appendChild(ctl);
+    var placed = [];
+    var shuffled = shuffle(q.steps.map(function(s,i){ return i; }));
+    if(shuffled.every(function(v,i){ return v===i; })) shuffled.reverse();
+    var undo = el('button','btn btn-ghost','Deshacer');
+    var confirm = el('button','btn btn-primary','Confirmar orden');
+    ctl.appendChild(undo); ctl.appendChild(confirm);
+    function draw(){
+      slots.innerHTML = '';
+      q.steps.forEach(function(s,k){
+        var sl = el('div','slot' + (placed[k]!==undefined?' filled':''));
+        sl.appendChild(el('em',null,String(k+1)));
+        sl.appendChild(document.createTextNode(placed[k]!==undefined ? q.steps[placed[k]] : ''));
+        slots.appendChild(sl);
+      });
+      stepsBox.innerHTML = '';
+      shuffled.forEach(function(idx){
+        var b = el('button','step' + (placed.indexOf(idx)!==-1?' used':''), q.steps[idx]);
+        b.addEventListener('click', function(){ placed.push(idx); draw(); });
+        stepsBox.appendChild(b);
+      });
+      undo.disabled = placed.length===0;
+      confirm.disabled = placed.length!==q.steps.length;
+    }
+    undo.addEventListener('click', function(){ placed.pop(); draw(); });
+    confirm.addEventListener('click', function(){
+      var right = placed.filter(function(v,k){ return v===k; }).length;
+      var pts = right===q.steps.length ? 2 : (right>=Math.ceil(q.steps.length/2) ? 1 : 0);
+      ctl.remove(); stepsBox.remove(); award(q, pts);
+    });
+    draw();
+  }
+
+  function wheelUI(q, area){
+    var box = el('div','sliders'); area.appendChild(box);
+    AREAS.forEach(function(a){
+      var w = el('div','sl');
+      var lb = el('label'); lb.setAttribute('for','sl-'+a.k);
+      lb.appendChild(document.createTextNode(a.n));
+      var val = el('span',null,String(st.wheel[a.k])); lb.appendChild(val);
+      var inp = document.createElement('input');
+      inp.type='range'; inp.min='1'; inp.max='10'; inp.step='1'; inp.id='sl-'+a.k; inp.value=String(st.wheel[a.k]);
+      inp.addEventListener('input', function(){ st.wheel[a.k] = parseInt(inp.value,10); val.textContent = inp.value; });
+      w.appendChild(lb); w.appendChild(inp); w.appendChild(el('small',null,a.h));
+      box.appendChild(w);
+    });
+    area.appendChild(el('div','sub','¿Qué área trabajarás primero?'));
+    var opts = el('div','opts'); area.appendChild(opts);
+    AREAS.forEach(function(a){
+      var b = el('button','opt',a.n);
+      b.addEventListener('click', function(){
+        Array.prototype.forEach.call(opts.children, function(x){ x.disabled = true; });
+        Array.prototype.forEach.call(box.querySelectorAll('input'), function(x){ x.disabled = true; });
+        b.classList.add('picked'); st.wheelPick = a.k;
+        var vals = AREAS.map(function(x){ return st.wheel[x.k]; }).sort(function(m,n){ return m-n; });
+        award(q, st.wheel[a.k] <= vals[1] ? 2 : 1);
+      });
+      opts.appendChild(b);
+    });
+  }
+
+  /* ---------- party ---------- */
+  var PARTY = ['🎉','🎈','🎁','🥳','🎊','✨','🚀','🏆','💥','🌟'];
+  function party(big){
+    var old = document.getElementById('party'); if(old) old.remove();
+    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var box = el('div'); box.id='party'; box.setAttribute('aria-hidden','true');
+    var n = big ? 46 : 22;
+    for(var i=0;i<n;i++){
+      var s = el('span','pf', PARTY[Math.floor(Math.random()*PARTY.length)]);
+      s.style.left=(Math.random()*100)+'vw'; s.style.fontSize=(22+Math.random()*26)+'px';
+      s.style.animationDuration=(2.6+Math.random()*2.4)+'s'; s.style.animationDelay=(Math.random()*0.9)+'s';
+      s.style.setProperty('--dx',(Math.random()*160-80)+'px');
+      box.appendChild(s);
+    }
+    document.body.appendChild(box);
+    setTimeout(function(){ box.remove(); }, 6200);
+  }
+
+  /* ---------- results ---------- */
+  function pct(k){ return MAXT[k] ? st.pts[k]/MAXT[k] : 0; }
+
+  function radarSVG(labels, vals, ariaLabel){
+    var NS='http://www.w3.org/2000/svg', cx=200, cy=150, R=90, n=labels.length;
+    var svg=document.createElementNS(NS,'svg');
+    svg.setAttribute('viewBox','0 0 400 300'); svg.setAttribute('class','radar'); svg.setAttribute('role','img'); svg.setAttribute('aria-label',ariaLabel);
+    function pt(i,r){ var a=-Math.PI/2+i*2*Math.PI/n; return [cx+r*Math.cos(a), cy+r*Math.sin(a)]; }
+    [0.25,0.5,0.75,1].forEach(function(f){
+      var g=document.createElementNS(NS,'polygon');
+      g.setAttribute('points', labels.map(function(_,i){ return pt(i,R*f).join(','); }).join(' ')); g.setAttribute('class','grid'); svg.appendChild(g);
+    });
+    labels.forEach(function(_,i){
+      var p=pt(i,R), l=document.createElementNS(NS,'line');
+      l.setAttribute('x1',cx); l.setAttribute('y1',cy); l.setAttribute('x2',p[0]); l.setAttribute('y2',p[1]); l.setAttribute('class','axis'); svg.appendChild(l);
+    });
+    var shape=document.createElementNS(NS,'polygon');
+    shape.setAttribute('points', vals.map(function(v,i){ return pt(i,R*Math.max(0.06,v)).join(','); }).join(' ')); shape.setAttribute('class','shape'); svg.appendChild(shape);
+    labels.forEach(function(lab,i){
+      var p=pt(i,R+22), t=document.createElementNS(NS,'text');
+      t.setAttribute('x',p[0]); t.setAttribute('y',p[1]+4);
+      t.setAttribute('text-anchor', p[0]<cx-5?'end':(p[0]>cx+5?'start':'middle')); t.textContent=lab; svg.appendChild(t);
+      var q=pt(i,R*Math.max(0.06,vals[i])), d=document.createElementNS(NS,'circle');
+      d.setAttribute('cx',q[0]); d.setAttribute('cy',q[1]); d.setAttribute('r',4); d.setAttribute('fill','var(--accent)'); svg.appendChild(d);
+    });
+    return svg;
+  }
+
+  function tipEl(kcls, label, text){
+    var t = el('div','tip '+kcls); t.appendChild(el('small',null,label)); t.appendChild(el('p',null,text)); return t;
+  }
+
+  function finish(){
+    sRes.innerHTML = '';
+    var ranked = TORDER.slice().sort(function(a,b){ return pct(a)-pct(b); });
+    var weakest = ranked[0], second = ranked[1], strongest = ranked[ranked.length-1];
+    var total = TORDER.reduce(function(a,k){ return a+st.pts[k]; },0);
+    var max = TORDER.reduce(function(a,k){ return a+MAXT[k]; },0);
+    var overall = total/max;
+    var tier = overall>=0.75 ? 'high' : (overall>=0.45 ? 'mid' : 'low');
+    var T = TIERS[tier];
+    var nm = st.name;
+
+    /* summary */
+    var c1 = el('div','card');
+    var head = el('div','res-head');
+    head.appendChild(el('div','eyebrow','Ruta completada · Instituto i3'));
+    head.appendChild(el('h1',null,(nm ? nm + ', terminaste' : 'Terminaste') + ' las 10 etapas.'));
+    head.appendChild(el('p',null,'Tu zona más fuerte fue ' + TOPICS[strongest].name.toLowerCase() + ' y donde más puedes entrenar es ' + TOPICS[weakest].name.toLowerCase() + '. Mira tu mapa.'));
+    head.appendChild(el('div','badge',T.badge));
+    c1.appendChild(head);
+    var bars = el('div','bars');
+    TORDER.forEach(function(k){
+      var p = pct(k), w = el('div','k-'+k);
+      var top = el('div','bar-top'); top.appendChild(document.createTextNode(TOPICS[k].name));
+      top.appendChild(el('span',null, k==='rue' ? 'Reflexión · ' + Math.round(p*100) + '%' : Math.round(p*100) + '%'));
+      var tr = el('div','track'), f = el('div','fill'); tr.appendChild(f); w.appendChild(top); w.appendChild(tr); bars.appendChild(w);
+      f.dataset.w = Math.round(p*100);
+    });
+    c1.appendChild(bars);
+    sRes.appendChild(c1);
+
+    /* wheel */
+    var c2 = el('div','card');
+    c2.appendChild(el('h2',null,'Tu rueda de la vida'));
+    var wp = el('p',null,'Así quedó tu foto de hoy. No es una nota: es un punto de partida.');
+    wp.style.cssText='color:var(--soft);font-size:14.5px;margin:6px 0 0;';
+    c2.appendChild(wp);
+    c2.appendChild(radarSVG(['Trabajo','Familia','Salud','Finanzas','Desarrollo','Ocio'],
+                            AREAS.map(function(a){ return st.wheel[a.k]/10; }), 'Gráfico de tu rueda de la vida'));
+    sRes.appendChild(c2);
+
+    /* coach */
+    var c3 = el('div','card');
+    var coach = el('div','coach');
+    coach.appendChild(el('div','avatar','CG'));
+    var ct = el('div'); ct.appendChild(el('h2',null,'Mensaje del coach Camilo Gallego')); ct.appendChild(el('p',null,'Motivación según cómo jugaste tu ruta.')); coach.appendChild(ct);
+    c3.appendChild(coach);
+    var letter = el('div','letter');
+    letter.appendChild(el('strong',null,'¡' + (nm ? nm + ', ' : '') + T.title + '!'));
+    letter.appendChild(document.createTextNode(T.text));
+    c3.appendChild(letter);
+
+    var tips = el('div','tips');
+    TIPS[weakest].low.forEach(function(tx,i){ tips.appendChild(tipEl('k-'+weakest, (i===0?'Entrena primero · ':'')+TOPICS[weakest].name, tx)); });
+    if(pct(second) < 0.75 && second !== weakest){
+      tips.appendChild(tipEl('k-'+second,'Después · '+TOPICS[second].name, TIPS[second].low[0]));
+    }
+    if(pct(strongest) >= 0.5){
+      tips.appendChild(tipEl('k-'+strongest,'Tu fortaleza · '+TOPICS[strongest].name, TIPS[strongest].high[0]));
+    }
+    var vals = AREAS.slice().sort(function(a,b){ return st.wheel[a.k]-st.wheel[b.k]; });
+    var lowArea = vals[0];
+    var pickArea = AREAS.filter(function(a){ return a.k===st.wheelPick; })[0] || lowArea;
+    tips.appendChild(tipEl('k-rue','Tu rueda · '+pickArea.n, AREA_TIPS[pickArea.k] + (lowArea.k!==pickArea.k && st.wheel[lowArea.k] < st.wheel[pickArea.k] ? ' Y no pierdas de vista «'+lowArea.n.toLowerCase()+'», que fue tu puntuación más baja.' : '')));
+    if(st.focus) tips.appendChild(tipEl('k-none','La emoción que elegiste · '+FOCUS_LABEL[st.focus], FOCUS_TIPS[st.focus]));
+    c3.appendChild(tips);
+    var q = el('p','quote','“No siempre podemos controlar lo que sucede, pero podemos aprender a gestionar nuestras decisiones y nuestra manera de responder.” — Coach Camilo Gallego');
+    c3.appendChild(q);
+    sRes.appendChild(c3);
+
+    /* commitment */
+    var c4 = el('div','card');
+    c4.appendChild(el('h2',null,'Tu compromiso final'));
+    var fr = el('div','frase');
+    fr.style.marginTop='12px';
+    fr.appendChild(document.createTextNode('“A partir de hoy, voy a dejar de gastar tanta energía en '));
+    var i1 = document.createElement('input'); i1.id='f1'; i1.type='text'; i1.placeholder='lo que no controlo'; i1.setAttribute('aria-label','Lo que dejaré de gastar energía');
+    fr.appendChild(i1);
+    fr.appendChild(document.createTextNode(' y voy a empezar a trabajar en '));
+    var i2 = document.createElement('input'); i2.id='f2'; i2.type='text'; i2.placeholder='lo que sí puedo cambiar'; i2.setAttribute('aria-label','En qué empezaré a trabajar');
+    fr.appendChild(i2);
+    fr.appendChild(document.createTextNode(' para mejorar mi bienestar y mi desarrollo personal”.'));
+    c4.appendChild(fr);
+    var row = el('div','row');
+    var go = el('button','btn btn-primary','🎉 Sellar mi compromiso');
+    var again = el('button','btn btn-ghost','Volver a recorrer la ruta');
+    again.addEventListener('click', function(){ resetState(); show(sStart); });
+    row.appendChild(go); row.appendChild(again); c4.appendChild(row);
+    var fb = el('div','commit-fb'); fb.hidden = true; fb.setAttribute('aria-live','polite'); c4.appendChild(fb);
+    go.addEventListener('click', function(){
+      var a = i1.value.trim(), b = i2.value.trim();
+      fb.hidden = false; fb.innerHTML = '';
+      if(a.length < 3 || b.length < 3){
+        fb.appendChild(el('div','cf-emoji','✍️'));
+        fb.appendChild(el('h3',null,'Completa las dos partes'));
+        fb.appendChild(el('p',null,'Escribe qué dejarás de cargar y en qué vas a enfocarte. Sé concreto: una cosa pequeña y posible.'));
+        return;
+      }
+      fb.appendChild(el('div','cf-emoji','🥳'));
+      fb.appendChild(el('h3',null,'¡' + (nm ? nm + ', compromiso' : 'Compromiso') + ' sellado!'));
+      fb.appendChild(el('p',null,'Dejar de gastar energía en «' + a + '» y enfocarte en «' + b + '» es justo el cambio de la preocupación a la acción. Toma una captura de pantalla para recordarlo.'));
+      var gift = el('button','gift','🎁'); gift.setAttribute('aria-label','Abrir el regalo del coach');
+      var cap = el('div','gift-cap','Toca el regalo: hay una sorpresa del coach');
+      var prize = el('div','prize'); prize.hidden = true;
+      gift.addEventListener('click', function(){
+        gift.disabled = true; gift.textContent='🎊'; cap.textContent='Regalo del coach Camilo';
+        prize.textContent='🚀 Esta semana, elige una sola acción de 20 minutos dentro de «' + b + '» y hazla hoy. Lo pequeño, repetido, cambia vidas. ¡Tú puedes!';
+        prize.hidden=false; party(true);
+      });
+      fb.appendChild(gift); fb.appendChild(cap); fb.appendChild(prize);
+      party(false);
+      fb.scrollIntoView({behavior:'smooth', block:'center'});
+    });
+    sRes.appendChild(c4);
+
+    show(sRes);
+    party(overall>=0.75);
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){
+      Array.prototype.forEach.call(sRes.querySelectorAll('.fill'), function(f){ f.style.width = f.dataset.w + '%'; });
+    });});
+  }
+})();
+</script>
